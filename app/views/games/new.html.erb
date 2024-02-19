@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New</title>
+</head>
+<body>
+   <h1>New Game</h1>
+  <div class="d-flex">
+    <% @letters.each do |letter| %>
+    <p class="bg-info fw-bolder mx-3 p-3 color-light text-white"><%= letter %></p>
+    <% end %>
+  </div>
+  <form action="/score" method="post" data-turbo="false">
+  <input type="text" name="word">
+  <input type="submit" value="Play!">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag 'letters', @letters.join %>
+</form>
+</body>
+</html>
